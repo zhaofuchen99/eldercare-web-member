@@ -1,0 +1,39 @@
+/* 全局样式：暖色调养老主题 */
+:root {
+  --brand-color: #e68a3c;
+  --brand-light: #f6dcc4;
+  --text-main: #323233;
+  --text-dim: #969799;
+}
+
+body {
+  margin: 0;
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Vant 主色调整为暖橙 */
+:root:root {
+  --van-primary-color: var(--brand-color);
+}
+
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.page-content {
+  padding: 12px;
+  padding-bottom: 70px; /* 底部 TabBar 预留 */
+}
+
+.page-title {
+  padding: 14px 16px 6px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.empty-pad {
+  height: 40px;
+}
