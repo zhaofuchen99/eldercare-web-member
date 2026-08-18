@@ -75,6 +75,7 @@ onMounted(async () => {
   font-size: 16px;
   font-weight: 600;
 }
+/* noinspection CssUnusedSymbol */ /* van-icon 为 Vant 组件内部渲染节点，:deep 运行时生效 */
 .mine-link :deep(.van-icon) {
   color: var(--brand-deep);
   font-size: 20px;

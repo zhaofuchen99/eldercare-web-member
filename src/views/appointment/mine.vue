@@ -15,7 +15,7 @@
           <div class="appt-main">
             <div class="appt-name">{{ a.packageName }}</div>
             <div class="appt-meta">
-              <van-icon name="calendar-o" /> {{ a.appointDate }} {{ a.timeRange }}
+              <van-icon name="calendar-o" class="meta-icon" /> {{ a.appointDate }} {{ a.timeRange }}
             </div>
             <div class="appt-meta">积分消费：{{ a.price }}</div>
           </div>
@@ -166,7 +166,7 @@ onMounted(() => {
   align-items: center;
   gap: 5px;
 }
-.appt-meta .van-icon {
+.appt-meta .meta-icon {
   color: var(--brand-deep);
 }
 .appt-right {

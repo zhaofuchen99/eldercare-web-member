@@ -11,14 +11,14 @@
               <div class="act-title">{{ a.title }}</div>
               <div class="act-content" v-if="a.content">{{ a.content }}</div>
               <div class="act-meta">
-                <van-icon name="location-o" /> {{ a.location || '未设置地点' }}
+                <van-icon name="location-o" class="meta-icon" /> {{ a.location || '未设置地点' }}
               </div>
               <div class="act-meta">
-                <van-icon name="clock-o" />
+                <van-icon name="clock-o" class="meta-icon" />
                 活动时间：{{ fmt(a.activityStartTime) }} ~ {{ fmtTime(a.activityEndTime) }}
               </div>
               <div class="act-meta dim">
-                <van-icon name="underway-o" />
+                <van-icon name="underway-o" class="meta-icon" />
                 报名：{{ fmt(a.registrationStartTime) }} ~ {{ fmtTime(a.registrationEndTime) }}
               </div>
             </div>
@@ -37,10 +37,10 @@
             <div class="act-main">
               <div class="act-title">{{ m.title }}</div>
               <div class="act-meta">
-                <van-icon name="location-o" /> {{ m.location || '未设置地点' }}
+                <van-icon name="location-o" class="meta-icon" /> {{ m.location || '未设置地点' }}
               </div>
               <div class="act-meta">
-                <van-icon name="clock-o" /> {{ fmt(m.activityStartTime) }} ~ {{ fmtTime(m.activityEndTime) }}
+                <van-icon name="clock-o" class="meta-icon" /> {{ fmt(m.activityStartTime) }} ~ {{ fmtTime(m.activityEndTime) }}
               </div>
             </div>
             <div class="act-right">
@@ -60,16 +60,16 @@
         <div class="detail-title">{{ detail.title }}</div>
         <div class="detail-meta">
           <div class="detail-meta-row">
-            <van-icon name="location-o" /><span>{{ detail.location || '未设置地点' }}</span>
+            <van-icon name="location-o" class="meta-icon" /><span>{{ detail.location || '未设置地点' }}</span>
           </div>
           <div class="detail-meta-row">
-            <van-icon name="clock-o" /><span>{{ fmt(detail.activityStartTime) }} ~ {{ fmtTime(detail.activityEndTime) }}</span>
+            <van-icon name="clock-o" class="meta-icon" /><span>{{ fmt(detail.activityStartTime) }} ~ {{ fmtTime(detail.activityEndTime) }}</span>
           </div>
           <div class="detail-meta-row">
-            <van-icon name="underway-o" /><span>报名期 {{ fmt(detail.registrationStartTime) }} ~ {{ fmtTime(detail.registrationEndTime) }}</span>
+            <van-icon name="underway-o" class="meta-icon" /><span>报名期 {{ fmt(detail.registrationStartTime) }} ~ {{ fmtTime(detail.registrationEndTime) }}</span>
           </div>
           <div class="detail-meta-row">
-            <van-icon name="people-o" /><span>名额 {{ detail.maxParticipants || '不限' }}，已报名 {{ detail.currentParticipants || 0 }}</span>
+            <van-icon name="people-o" class="meta-icon" /><span>名额 {{ detail.maxParticipants || '不限' }}，已报名 {{ detail.currentParticipants || 0 }}</span>
           </div>
         </div>
         <div class="detail-content">{{ detail.content || '暂无详细内容' }}</div>
@@ -288,14 +288,14 @@ onMounted(() => {
   align-items: center;
   gap: 5px;
 }
-.act-meta .van-icon {
+.act-meta .meta-icon {
   color: var(--brand-deep);
 }
 .act-meta.dim {
   color: var(--text-dim);
   font-size: 13px;
 }
-.act-meta.dim .van-icon {
+.act-meta.dim .meta-icon {
   color: var(--text-dim);
 }
 .act-right {
@@ -329,7 +329,7 @@ onMounted(() => {
   color: var(--text-sub);
   margin-bottom: 10px;
 }
-.detail-meta-row .van-icon {
+.detail-meta-row .meta-icon {
   color: var(--brand-deep);
   font-size: 17px;
 }
