@@ -60,41 +60,46 @@ onMounted(load)
 </script>
 
 <style scoped>
+.assess-history-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
 .history-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  padding: 18px 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--card-shadow);
 }
 .h-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
+  line-height: 1.4;
 }
 .h-time {
-  margin-top: 6px;
-  font-size: 12px;
-  color: #969799;
+  margin-top: 7px;
+  font-size: 13px;
+  color: var(--text-dim);
 }
 .h-score {
   text-align: center;
-  color: #d97c2b;
+  color: var(--brand-deep);
+  flex-shrink: 0;
+  margin-left: 12px;
+  min-width: 64px;
+  padding: 8px 6px;
+  background: var(--brand-bg);
+  border-radius: 10px;
 }
 .h-score-num {
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 700;
 }
 .h-score-label {
-  font-size: 11px;
-  color: #969799;
-}
-.load-more {
-  padding: 14px;
-  text-align: center;
-  color: #576b95;
-  font-size: 14px;
+  font-size: 12px;
+  color: var(--text-dim);
 }
 </style>

@@ -6,9 +6,9 @@
     </div>
     <van-tabbar v-model="active" route safe-area-inset-bottom>
       <van-tabbar-item replace to="/home" icon="wap-home-o">首页</van-tabbar-item>
-      <van-tabbar-item replace to="/health" icon="notes-o">健康</van-tabbar-item>
-      <van-tabbar-item replace to="/activity" icon="fire-o">活动</van-tabbar-item>
-      <van-tabbar-item replace to="/mine" icon="user-o">我的</van-tabbar-item>
+      <van-tabbar-item replace to="/health" icon="chart-trending-o">健康</van-tabbar-item>
+      <van-tabbar-item replace to="/activity" icon="flag-o">活动</van-tabbar-item>
+      <van-tabbar-item replace to="/mine" icon="friends-o">我的</van-tabbar-item>
     </van-tabbar>
   </div>
 </template>
@@ -23,8 +23,17 @@ const title = computed(() => route.meta.title || '')
 </script>
 
 <style scoped>
+.tabbar-layout {
+  background: var(--page-bg);
+}
+.tabbar-layout :deep(.van-tabbar) {
+  box-shadow: 0 -2px 10px rgba(180, 130, 60, 0.06);
+}
+.tabbar-layout :deep(.van-tabbar-item--active) {
+  font-weight: 600;
+}
 .tabbar-body {
   min-height: 100vh;
-  padding-bottom: 50px;
+  padding-bottom: 58px;
 }
 </style>

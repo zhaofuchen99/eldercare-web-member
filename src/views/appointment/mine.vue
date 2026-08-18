@@ -131,49 +131,55 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.appt-mine-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
 .appt-list {
-  padding-top: 8px;
+  padding-top: 12px;
 }
 .appt-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
-  border-radius: 10px;
-  padding: 14px 16px;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--card-shadow);
 }
 .appt-main {
   flex: 1;
   min-width: 0;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 .appt-name {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
+  line-height: 1.4;
 }
 .appt-meta {
-  margin-top: 4px;
-  font-size: 13px;
-  color: #646566;
+  margin-top: 6px;
+  font-size: 14px;
+  color: var(--text-sub);
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+}
+.appt-meta .van-icon {
+  color: var(--brand-deep);
 }
 .appt-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 6px;
+  gap: 8px;
 }
+/* 取消/下载按钮加大热区 */
 .cancel-btn {
   margin-top: 2px;
-}
-.load-more {
-  padding: 14px;
-  text-align: center;
-  color: #576b95;
-  font-size: 14px;
+  height: 34px !important;
+  padding: 0 14px !important;
+  font-size: 14px !important;
 }
 </style>

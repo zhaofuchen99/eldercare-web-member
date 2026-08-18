@@ -242,93 +242,115 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.activity-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
 .act-list {
-  padding: 10px 12px;
+  padding: 12px 14px 70px;
 }
 .act-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
-  border-radius: 10px;
-  padding: 14px;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--card-shadow);
 }
 .act-main {
   flex: 1;
   min-width: 0;
-  margin-right: 10px;
+  margin-right: 12px;
 }
 .act-title {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  line-height: 1.4;
 }
 .act-content {
-  font-size: 13px;
-  color: #969799;
-  line-height: 1.5;
-  margin-bottom: 6px;
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
+  margin-bottom: 8px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 .act-meta {
-  font-size: 13px;
-  color: #646566;
-  margin-top: 4px;
+  font-size: 14px;
+  color: var(--text-sub);
+  margin-top: 6px;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
+}
+.act-meta .van-icon {
+  color: var(--brand-deep);
 }
 .act-meta.dim {
-  color: #969799;
-  font-size: 12px;
+  color: var(--text-dim);
+  font-size: 13px;
+}
+.act-meta.dim .van-icon {
+  color: var(--text-dim);
 }
 .act-right {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 6px;
+  gap: 8px;
 }
 .act-count {
-  font-size: 12px;
-  color: #969799;
+  font-size: 13px;
+  color: var(--text-dim);
 }
 .checkin-tag {
   margin-top: 2px;
 }
+/* 活动详情弹层 */
 .detail-pop {
-  padding: 20px 18px 26px;
+  padding: 24px 20px 30px;
 }
 .detail-title {
-  font-size: 18px;
-  font-weight: 600;
-  margin-bottom: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  line-height: 1.4;
 }
 .detail-meta-row {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  color: #646566;
-  margin-bottom: 8px;
+  gap: 8px;
+  font-size: 15px;
+  color: var(--text-sub);
+  margin-bottom: 10px;
+}
+.detail-meta-row .van-icon {
+  color: var(--brand-deep);
+  font-size: 17px;
 }
 .detail-content {
-  margin-top: 10px;
-  padding: 10px;
-  background: #f7f8fa;
-  border-radius: 8px;
-  font-size: 14px;
-  color: #323233;
-  line-height: 1.7;
+  margin-top: 12px;
+  padding: 14px;
+  background: var(--brand-bg);
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--text-main);
+  line-height: 1.8;
   white-space: pre-wrap;
   max-height: 30vh;
   overflow: auto;
 }
 .detail-actions {
-  margin-top: 18px;
+  margin-top: 20px;
+}
+.detail-actions :deep(.van-button) {
+  height: 50px;
+  font-size: 17px;
+  font-weight: 600;
 }
 </style>

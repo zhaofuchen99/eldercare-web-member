@@ -57,16 +57,34 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.mine-link {
-  margin: 10px 0;
+.appt-list-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
+.appt-list-page :deep(.van-notice-bar) {
   border-radius: 10px;
 }
-.pkg-card {
-  background: #fff;
+.mine-link {
+  margin: 12px 0;
   border-radius: 10px;
-  padding: 16px;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+.mine-link :deep(.van-cell__title) {
+  font-size: 16px;
+  font-weight: 600;
+}
+.mine-link :deep(.van-icon) {
+  color: var(--brand-deep);
+  font-size: 20px;
+}
+.pkg-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  padding: 18px 16px;
   margin-bottom: 12px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--card-shadow);
 }
 .pkg-head {
   display: flex;
@@ -74,38 +92,49 @@ onMounted(async () => {
   align-items: center;
 }
 .pkg-name {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
+  line-height: 1.4;
 }
 .pkg-price {
-  color: #d97c2b;
-  font-size: 18px;
+  color: var(--brand-deep);
+  font-size: 20px;
   font-weight: 700;
+  flex-shrink: 0;
+  margin-left: 10px;
 }
 .price-icon {
-  font-size: 14px;
+  font-size: 16px;
 }
 .pkg-line {
-  margin-top: 6px;
-  font-size: 13px;
-  color: #646566;
-  line-height: 1.6;
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--text-sub);
+  line-height: 1.7;
 }
 .pkg-line.dim {
-  color: #969799;
+  color: var(--text-dim);
+  font-size: 14px;
 }
 .pkg-items {
-  margin-top: 8px;
+  margin-top: 10px;
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 8px;
 }
 .pkg-tag {
-  padding: 0 8px;
+  padding: 2px 10px;
+  font-size: 13px;
 }
 .pkg-footer {
-  margin-top: 12px;
+  margin-top: 14px;
   display: flex;
   justify-content: flex-end;
+}
+.pkg-footer :deep(.van-button) {
+  height: 42px;
+  min-width: 132px;
+  font-size: 15px;
+  font-weight: 600;
 }
 </style>

@@ -1,21 +1,106 @@
-/* 全局样式：暖色调养老主题 */
+/* 全局样式：暖色调养老主题（适老化设计 Token） */
 :root {
-  --brand-color: #e68a3c;
-  --brand-light: #f6dcc4;
+  /* 品牌暖橙 */
+  --brand-color: #e8843c;
+  --brand-deep: #d97c2b;
+  --brand-light: #f4a259;
+  --brand-bg: #fff7ef;
+  --brand-gradient: linear-gradient(135deg, #f4a259 0%, #e8843c 100%);
+  /* 中性色 */
+  --page-bg: #faf7f2;
+  --card-bg: #ffffff;
   --text-main: #323233;
-  --text-dim: #969799;
+  --text-sub: #646566;
+  --text-dim: #8a8b8d;
+  --line-color: #f2ede6;
+  /* 圆角 / 阴影 / 间距 */
+  --radius-card: 12px;
+  --card-shadow: 0 2px 10px rgba(180, 130, 60, 0.08);
+  --page-pad: 14px;
+}
+
+/* Vant 主题定制：暖橙主色 + 适老化字号（正文 ≥15px、控件加大） */
+:root:root {
+  --van-primary-color: var(--brand-color);
+  --van-text-color: var(--text-main);
+  --van-text-color-2: var(--text-sub);
+  --van-text-color-3: var(--text-dim);
+  --van-background: var(--page-bg);
+  --van-border-color: var(--line-color);
+  --van-active-color: #f3ece3;
+  --van-font-size-sm: 14px;
+  --van-font-size-md: 16px;
+  --van-font-size-lg: 18px;
+  /* 导航栏 */
+  --van-nav-bar-height: 52px;
+  --van-nav-bar-title-font-size: 18px;
+  --van-nav-bar-icon-size: 22px;
+  --van-nav-bar-background: var(--card-bg);
+  --van-nav-bar-arrow-color: #5a5b5d;
+  /* 单元格：行高加大，触控宽松 */
+  --van-cell-background: var(--card-bg);
+  --van-cell-font-size: 16px;
+  --van-cell-line-height: 26px;
+  --van-cell-vertical-padding: 15px;
+  --van-cell-horizontal-padding: 16px;
+  --van-cell-text-color: var(--text-main);
+  --van-cell-value-color: var(--text-sub);
+  --van-cell-group-background: transparent;
+  --van-cell-group-inset-padding: var(--page-pad);
+  --van-cell-group-inset-border-radius: var(--radius-card);
+  --van-cell-group-title-font-size: 15px;
+  /* 按钮：大按钮，易点击 */
+  --van-button-normal-font-size: 17px;
+  --van-button-normal-height: 48px;
+  --van-button-small-font-size: 15px;
+  --van-button-small-height: 38px;
+  --van-button-mini-font-size: 13px;
+  --van-button-mini-height: 30px;
+  --van-button-primary-background: var(--brand-color);
+  --van-button-primary-border-color: var(--brand-color);
+  /* 表单 */
+  --van-field-label-width: 6em;
+  --van-field-placeholder-text-color: #bcbdc0;
+  /* 标签页 */
+  --van-tabs-nav-background: transparent;
+  --van-tab-font-size: 16px;
+  --van-tab-active-text-color: var(--brand-deep);
+  --van-tabs-bottom-bar-color: var(--brand-color);
+  /* 标签 / 徽标 */
+  --van-tag-padding: 3px 9px;
+  --van-tag-font-size: 13px;
+  --van-badge-font-size: 12px;
+  /* 底部 TabBar */
+  --van-tabbar-height: 58px;
+  --van-tabbar-background: var(--card-bg);
+  --van-tabbar-item-font-size: 13px;
+  --van-tabbar-item-icon-size: 25px;
+  --van-tabbar-item-active-color: var(--brand-deep);
+  --van-tabbar-item-active-background: transparent;
+  /* 弹层 / 反馈 */
+  --van-popup-round-border-radius: 18px;
+  --van-dialog-font-size: 17px;
+  --van-dialog-message-font-size: 16px;
+  --van-dialog-message-line-height: 1.7;
+  --van-toast-font-size: 15px;
+  --van-empty-description-font-size: 15px;
+  --van-notice-bar-font-size: 14px;
+  --van-notice-bar-height: 42px;
+  --van-notice-bar-background: var(--brand-bg);
+  --van-notice-bar-text-color: var(--brand-deep);
+  /* 提交栏（预约积分结算） */
+  --van-submit-bar-height: 62px;
+  --van-submit-bar-price-font-size: 18px;
+  --van-submit-bar-button-width: 130px;
 }
 
 body {
   margin: 0;
   color: var(--text-main);
+  font-size: 16px;
+  background: var(--page-bg);
   font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Microsoft YaHei', sans-serif;
   -webkit-font-smoothing: antialiased;
-}
-
-/* Vant 主色调整为暖橙 */
-:root:root {
-  --van-primary-color: var(--brand-color);
 }
 
 .page {
@@ -24,16 +109,89 @@ body {
 }
 
 .page-content {
-  padding: 12px;
-  padding-bottom: 70px; /* 底部 TabBar 预留 */
+  padding: var(--page-pad);
+  padding-bottom: 76px; /* 底部 TabBar 预留 */
 }
 
 .page-title {
-  padding: 14px 16px 6px;
-  font-size: 18px;
+  padding: 16px 16px 8px;
+  font-size: 19px;
   font-weight: 600;
 }
 
 .empty-pad {
   height: 40px;
+}
+
+/* 统一卡片视觉：圆角 12px、柔和阴影、留白充足 */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+}
+
+/* 「加载更多」统一为大触控热区按钮样式 */
+.load-more {
+  margin: 4px 0 8px;
+  padding: 13px;
+  text-align: center;
+  background: var(--card-bg);
+  border-radius: 10px;
+  color: var(--brand-deep);
+  font-size: 15px;
+  font-weight: 500;
+  box-shadow: var(--card-shadow);
+}
+.load-more:active {
+  background: var(--brand-bg);
+}
+
+/* 导航栏标题加粗，长者更易识别 */
+.van-nav-bar__title {
+  font-weight: 600;
+}
+
+/* 卡片分组标题：暖橙强调 */
+.van-cell-group__title {
+  color: var(--brand-deep);
+  font-weight: 600;
+}
+
+/* 单选/多选图标加大，便于点选 */
+.van-radio__icon .van-icon,
+.van-checkbox__icon .van-icon {
+  font-size: 22px;
+}
+.van-radio__label,
+.van-checkbox__label {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+/* 空状态提示更清晰 */
+.van-empty {
+  padding: 48px 0;
+}
+.van-empty__description {
+  color: var(--text-dim);
+  margin-top: 14px;
+}
+
+/* 输入框整体加大 */
+.van-field__label {
+  color: var(--text-main);
+}
+
+/* 统一按压反馈，提示可点击 */
+.act-card:active,
+.session-card:active,
+.questionnaire-card:active,
+.history-card:active,
+.pkg-card:active,
+.appt-card:active,
+.msg-card:active,
+.slot-card:active,
+.date-chip:active {
+  transform: scale(0.985);
+  transition: transform 0.15s;
 }

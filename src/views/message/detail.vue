@@ -55,27 +55,34 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.msg-detail-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
 .detail-card {
-  background: #fff;
-  border-radius: 10px;
-  padding: 18px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  padding: 20px 18px;
+  box-shadow: var(--card-shadow);
 }
 .detail-title {
-  margin-top: 12px;
-  font-size: 18px;
-  font-weight: 600;
+  margin-top: 14px;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.5;
 }
 .detail-time {
-  margin-top: 6px;
-  font-size: 12px;
-  color: #c8c9cc;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #b0b1b4;
 }
 .detail-content {
-  margin-top: 14px;
-  font-size: 15px;
-  line-height: 1.8;
-  color: #323233;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line-color);
+  font-size: 16px;
+  line-height: 1.9;
+  color: var(--text-main);
   white-space: pre-wrap;
 }
 </style>

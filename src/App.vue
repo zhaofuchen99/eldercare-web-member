@@ -7,6 +7,7 @@
 <style>
 .member-app {
   min-height: 100vh;
-  background: #f7f8fa;
+  background: var(--page-bg);
+  color: var(--text-main);
 }
 </style>

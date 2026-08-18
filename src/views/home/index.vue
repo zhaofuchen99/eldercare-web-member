@@ -38,7 +38,6 @@
       <van-grid-item icon="bar-chart-o" text="健康档案" @click="go('/health')" />
       <van-grid-item icon="gem-o" text="积分明细" @click="go('/points')" />
     </van-grid>
-
     <!-- 最近健康记录 -->
     <van-cell-group inset class="home-last">
       <van-cell title="最近健康记录" is-link @click="go('/health')">
@@ -114,10 +113,16 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.home-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
 .home-hero {
-  padding: 20px 16px 16px;
-  background: linear-gradient(135deg, #f4a259 0%, #e8843c 100%);
+  padding: 22px 16px 20px;
+  background: var(--brand-gradient);
+  border-radius: 0 0 24px 24px;
   color: #fff;
+  box-shadow: 0 6px 18px rgba(232, 132, 60, 0.22);
 }
 .hero-top {
   display: flex;
@@ -129,64 +134,109 @@ onMounted(async () => {
   align-items: center;
   gap: 12px;
 }
+.hero-avatar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
 .avatar-fallback {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 28px;
 }
 .hero-name {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 21px;
+  font-weight: 700;
 }
 .hero-level {
-  margin-top: 6px;
+  margin-top: 7px;
   display: flex;
   align-items: center;
   gap: 8px;
 }
 .hero-status {
-  font-size: 12px;
-  opacity: 0.85;
+  font-size: 13px;
+  opacity: 0.9;
 }
 .hero-points {
   text-align: right;
   cursor: pointer;
 }
 .points-num {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 700;
 }
 .points-label {
-  font-size: 12px;
-  opacity: 0.9;
+  font-size: 13px;
+  opacity: 0.92;
 }
 .hero-msg {
-  margin-top: 16px;
+  margin-top: 18px;
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-size: 14px;
-  background: rgba(255, 255, 255, 0.18);
-  border-radius: 20px;
-  padding: 8px 14px;
+  gap: 8px;
+  font-size: 15px;
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 22px;
+  padding: 10px 16px;
   cursor: pointer;
+}
+.hero-msg:active {
+  background: rgba(255, 255, 255, 0.32);
 }
 .msg-badge {
   margin-left: auto;
 }
+/* 功能宫格：悬浮卡片式 */
 .home-grid {
-  margin-top: 12px;
+  margin: 14px var(--page-pad) 0;
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
 }
+.home-grid :deep(.van-grid-item) {
+  padding: 16px 0 14px;
+}
+.home-grid :deep(.van-grid-item__content) {
+  background: transparent;
+}
+.home-grid :deep(.van-grid-item__content:active) {
+  background: var(--brand-bg);
+}
+.home-grid :deep(.van-grid-item__icon) {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--brand-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 8px;
+}
+.home-grid :deep(.van-grid-item__icon .van-icon) {
+  font-size: 24px;
+  color: var(--brand-deep);
+}
+.home-grid :deep(.van-grid-item__text) {
+  font-size: 15px;
+  color: var(--text-main);
+  margin-top: 2px;
+}
+/* 最近健康记录卡片 */
 .home-last {
-  margin-top: 12px;
+  margin-top: 14px;
+  box-shadow: var(--card-shadow);
+}
+.home-last :deep(.van-cell-group__title) {
+  color: var(--brand-deep);
+  font-weight: 600;
 }
 .last-time {
-  color: #969799;
-  font-size: 12px;
+  color: var(--text-dim);
+  font-size: 13px;
 }
 </style>

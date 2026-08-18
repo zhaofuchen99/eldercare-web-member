@@ -68,66 +68,86 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.assess-result-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
+/* 评分卡片 */
 .score-card {
   margin: 16px;
-  padding: 22px;
-  border-radius: 12px;
+  padding: 28px 22px;
+  border-radius: 16px;
   text-align: center;
-  background: linear-gradient(135deg, #f4a259 0%, #e8843c 100%);
+  background: var(--brand-gradient);
   color: #fff;
+  box-shadow: 0 8px 22px rgba(232, 132, 60, 0.3);
 }
 .score-grade {
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
   opacity: 0.95;
 }
 .score-num {
-  margin-top: 8px;
-  font-size: 48px;
+  margin-top: 10px;
+  font-size: 54px;
   font-weight: 700;
+  line-height: 1.1;
 }
 .score-total {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
 }
 .score-sub {
-  margin-top: 6px;
-  font-size: 13px;
-  opacity: 0.9;
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 0.92;
 }
 .suggest-card {
-  margin-top: 12px;
+  margin-top: 14px;
+  box-shadow: var(--card-shadow);
 }
 .suggest-text {
   white-space: pre-wrap;
   text-align: left;
-  font-size: 14px;
-  color: #646566;
-  line-height: 1.7;
+  font-size: 15px;
+  color: var(--text-sub);
+  line-height: 1.8;
+}
+/* 逐题解析 */
+.assess-result-page :deep(.van-cell-group--inset) {
+  box-shadow: var(--card-shadow);
 }
 .answer-item {
-  padding: 14px 16px;
-  border-bottom: 1px solid #f2f3f5;
+  padding: 16px;
+  border-bottom: 1px solid var(--line-color);
 }
 .answer-item:last-child {
   border-bottom: none;
 }
 .answer-q {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
+  line-height: 1.5;
 }
 .answer-line {
-  font-size: 13px;
-  color: #646566;
-  line-height: 1.7;
+  font-size: 15px;
+  color: var(--text-sub);
+  line-height: 1.8;
 }
 .answer-line .label {
-  color: #969799;
+  color: var(--text-dim);
 }
 .answer-score {
-  margin-top: 6px;
+  margin-top: 8px;
 }
 .result-actions {
-  margin: 20px;
+  margin: 22px 20px;
+}
+.result-actions :deep(.van-button) {
+  height: 52px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.35);
 }
 </style>

@@ -75,35 +75,52 @@ function goForgot() {
 <style scoped>
 .login-page {
   min-height: 100vh;
-  background: linear-gradient(160deg, #fff5ea 0%, #f7f8fa 60%);
+  background: linear-gradient(160deg, #ffe9d2 0%, var(--page-bg) 55%);
 }
 .login-header {
-  padding: 56px 0 36px;
+  padding: 64px 0 40px;
   text-align: center;
 }
 .login-logo {
-  font-size: 52px;
+  width: 88px;
+  height: 88px;
+  margin: 0 auto;
+  border-radius: 26px;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
   line-height: 1;
 }
 .login-title {
-  margin-top: 14px;
-  font-size: 22px;
-  font-weight: 600;
-  color: #d97c2b;
+  margin-top: 18px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--brand-deep);
+  letter-spacing: 1px;
 }
 .login-subtitle {
-  margin-top: 8px;
-  font-size: 13px;
-  color: #969799;
+  margin-top: 10px;
+  font-size: 15px;
+  color: var(--text-sub);
 }
 .login-actions {
-  margin: 28px 20px 0;
+  margin: 30px 20px 0;
+}
+.login-actions :deep(.van-button) {
+  height: 52px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.35);
 }
 .login-links {
   display: flex;
   justify-content: space-between;
-  padding: 20px 40px;
-  font-size: 14px;
-  color: #576b95;
+  padding: 22px 44px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--brand-deep);
 }
 </style>

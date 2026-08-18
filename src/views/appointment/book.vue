@@ -132,75 +132,89 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.book-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
 .book-head {
-  padding: 4px 4px 14px;
+  padding: 6px 4px 16px;
 }
 .book-name {
-  font-size: 19px;
-  font-weight: 600;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.4;
 }
 .book-tip {
-  margin-top: 6px;
-  font-size: 12px;
-  color: #969799;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
 }
+/* 日期横条 */
 .date-bar {
   display: flex;
-  gap: 8px;
+  gap: 10px;
   overflow-x: auto;
-  padding: 4px 0 12px;
+  padding: 4px 0 14px;
   -webkit-overflow-scrolling: touch;
 }
 .date-chip {
   flex-shrink: 0;
-  width: 58px;
-  padding: 8px 0;
+  width: 64px;
+  padding: 10px 0;
   text-align: center;
-  background: #fff;
-  border-radius: 10px;
-  border: 1px solid transparent;
-  color: #646566;
+  background: var(--card-bg);
+  border-radius: 12px;
+  border: 1.5px solid transparent;
+  color: var(--text-sub);
+  box-shadow: var(--card-shadow);
 }
 .date-chip.active {
-  background: #e8843c;
+  background: var(--brand-gradient);
   color: #fff;
   font-weight: 600;
+  box-shadow: 0 4px 12px rgba(232, 132, 60, 0.35);
 }
 .date-week {
-  font-size: 12px;
+  font-size: 13px;
 }
 .date-day {
-  margin-top: 4px;
-  font-size: 14px;
+  margin-top: 5px;
+  font-size: 16px;
+  font-weight: 600;
 }
+/* 时段卡 */
 .slot-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
-  border-radius: 10px;
-  padding: 14px 16px;
-  margin-bottom: 10px;
-  border: 1px solid transparent;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  margin-bottom: 12px;
+  border: 1.5px solid transparent;
+  box-shadow: var(--card-shadow);
 }
 .slot-card.active {
-  border-color: #e8843c;
-  background: #fff7f0;
+  border-color: var(--brand-color);
+  background: #fff9f3;
 }
 .slot-time {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
 }
 .slot-left {
-  font-size: 13px;
+  font-size: 14px;
   color: #07c160;
+  flex: 1;
+  margin: 0 12px;
 }
 .slot-left.full {
   color: #ee0a24;
 }
 .submit-label {
-  color: #323233;
-  font-size: 14px;
+  color: var(--text-main);
+  font-size: 15px;
+  font-weight: 500;
 }
 </style>

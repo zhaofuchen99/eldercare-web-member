@@ -10,35 +10,35 @@
           type="number"
           label="收缩压"
           placeholder="30-250 mmHg"
-          :rules="[{ validator: optionalNum }]"
+          :rules="[{ validator: optionalNum, message: '收缩压需为 30-250 的数值', range: [30, 250] }]"
         />
         <van-field
           v-model="form.diastolic"
           type="number"
           label="舒张压"
           placeholder="30-150 mmHg"
-          :rules="[{ validator: optionalNum }]"
+          :rules="[{ validator: optionalNum, message: '舒张压需为 30-150 的数值', range: [30, 150] }]"
         />
         <van-field
           v-model="form.bloodSugar"
           type="number"
           label="空腹血糖"
           placeholder="1.0-30.0 mmol/L"
-          :rules="[{ validator: optionalNum }]"
+          :rules="[{ validator: optionalNum, message: '空腹血糖需为 1-30 的数值', range: [1, 30] }]"
         />
         <van-field
           v-model="form.heartRate"
           type="number"
           label="心率"
           placeholder="20-250 次/分"
-          :rules="[{ validator: optionalNum }]"
+          :rules="[{ validator: optionalNum, message: '心率需为 20-250 的数值', range: [20, 250] }]"
         />
         <van-field
           v-model="form.weight"
           type="number"
           label="体重"
           placeholder="10.0-300.0 kg"
-          :rules="[{ validator: optionalNum }]"
+          :rules="[{ validator: optionalNum, message: '体重需为 10-300 的数值', range: [10, 300] }]"
         />
         <van-field
           v-model="form.memo"
@@ -173,24 +173,41 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.health-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+  padding-bottom: 70px;
+}
+.health-page :deep(.van-cell-group--inset) {
+  box-shadow: var(--card-shadow);
+}
 .record-actions {
-  margin: 4px 20px 12px;
+  margin: 6px 20px 16px;
+}
+.record-actions :deep(.van-button) {
+  height: 50px;
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.3);
 }
 .record-time {
-  color: #969799;
-  font-size: 12px;
+  color: var(--text-dim);
+  font-size: 13px;
 }
-.load-more {
-  padding: 12px;
-  text-align: center;
-  color: #576b95;
-  font-size: 14px;
-}
+/* 趋势数据行：分列清晰 */
 .trend-row {
   display: flex;
   justify-content: space-between;
-  padding: 6px 0;
-  font-size: 13px;
-  color: #646566;
+  align-items: center;
+  padding: 11px 16px;
+  font-size: 15px;
+  color: var(--text-sub);
+  background: var(--brand-bg);
+  border-radius: 8px;
+  margin: 6px 12px;
+}
+.trend-row span:first-child {
+  font-weight: 600;
+  color: var(--text-main);
 }
 </style>

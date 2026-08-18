@@ -118,7 +118,21 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.profile-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
+.profile-page :deep(.van-cell-group--inset) {
+  margin-top: 14px;
+  box-shadow: var(--card-shadow);
+}
 .save-wrap {
-  margin: 20px;
+  margin: 24px 20px;
+}
+.save-wrap :deep(.van-button) {
+  height: 52px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.35);
 }
 </style>

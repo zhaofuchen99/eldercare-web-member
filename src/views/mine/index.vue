@@ -106,20 +106,32 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.mine-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
 .mine-hero {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 24px 20px;
-  background: linear-gradient(135deg, #f4a259 0%, #e8843c 100%);
+  padding: 26px 20px;
+  background: var(--brand-gradient);
+  border-radius: 0 0 24px 24px;
   color: #fff;
   cursor: pointer;
+  box-shadow: 0 6px 18px rgba(232, 132, 60, 0.22);
+}
+.mine-hero:active {
+  opacity: 0.92;
+}
+.mine-avatar {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 .avatar-fallback {
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -129,30 +141,62 @@ onMounted(async () => {
   flex: 1;
 }
 .mine-name {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 21px;
+  font-weight: 700;
 }
 .mine-sub {
-  margin-top: 4px;
-  font-size: 13px;
-  opacity: 0.9;
+  margin-top: 6px;
+  font-size: 14px;
+  opacity: 0.92;
 }
 .mine-arrow {
-  opacity: 0.8;
+  font-size: 18px;
+  opacity: 0.85;
 }
+/* 积分概览 */
 .mine-points {
-  margin-top: 10px;
+  margin-top: 14px;
+  box-shadow: var(--card-shadow);
 }
 .points-num {
-  color: #d97c2b;
-  font-size: 18px;
+  color: var(--brand-deep);
+  font-size: 22px;
   font-weight: 700;
+}
+/* 功能菜单卡片 */
+.mine-page :deep(.van-cell-group--inset) {
+  box-shadow: var(--card-shadow);
+  margin-top: 14px;
+}
+.mine-page :deep(.van-cell-group__title) {
+  color: var(--brand-deep);
+  font-weight: 600;
+}
+.mine-page :deep(.van-cell .van-icon) {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: var(--brand-bg);
+  color: var(--brand-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-right: 12px;
+}
+.mine-page :deep(.van-cell__title) {
+  font-size: 16px;
 }
 .cell-arrow {
   margin-left: 6px;
-  color: #969799;
+  color: var(--text-dim);
 }
 .logout-wrap {
-  margin: 24px 20px;
+  margin: 28px 20px;
+}
+.logout-wrap :deep(.van-button) {
+  height: 50px;
+  font-size: 17px;
+  font-weight: 600;
 }
 </style>

@@ -68,20 +68,28 @@ onMounted(load)
 </script>
 
 <style scoped>
+.msg-list-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
 .msg-card {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
-  border-radius: 10px;
-  padding: 14px 16px;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--card-shadow);
+}
+/* 未读消息：左侧橙色强调条 */
+.msg-card.unread {
+  border-left: 4px solid var(--brand-color);
 }
 .msg-left {
   flex: 1;
   min-width: 0;
-  margin-right: 8px;
+  margin-right: 10px;
 }
 .msg-head {
   display: flex;
@@ -89,7 +97,7 @@ onMounted(load)
   gap: 8px;
 }
 .msg-title {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -98,36 +106,32 @@ onMounted(load)
   min-width: 0;
 }
 .unread .msg-title {
-  color: #d97c2b;
+  color: var(--brand-deep);
 }
 .unread-dot {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: #ee0a24;
   flex-shrink: 0;
 }
 .msg-preview {
-  margin-top: 6px;
-  font-size: 13px;
-  color: #969799;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.6;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 .msg-time {
-  margin-top: 6px;
-  font-size: 11px;
-  color: #c8c9cc;
+  margin-top: 8px;
+  font-size: 13px;
+  color: #b0b1b4;
 }
 .msg-arrow {
   color: #c8c9cc;
   flex-shrink: 0;
-}
-.load-more {
-  padding: 14px;
-  text-align: center;
-  color: #576b95;
-  font-size: 14px;
+  font-size: 16px;
 }
 </style>

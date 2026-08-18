@@ -89,9 +89,21 @@ async function onSubmit() {
 <style scoped>
 .forgot-page {
   min-height: 100vh;
-  background: #f7f8fa;
+  background: var(--page-bg);
 }
 .forgot-actions {
-  margin: 28px 20px 0;
+  margin: 30px 20px 0;
+}
+.forgot-actions :deep(.van-button--primary) {
+  height: 52px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.35);
+}
+/* 验证码小按钮加大热区 */
+.forgot-page :deep(.van-field__button .van-button) {
+  height: 38px;
+  padding: 0 14px;
+  font-size: 14px;
 }
 </style>

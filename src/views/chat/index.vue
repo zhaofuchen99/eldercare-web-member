@@ -238,43 +238,62 @@ onMounted(loadSessions)
 </script>
 
 <style scoped>
+.chat-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
+/* 会话列表卡片 */
 .session-card {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
-  border-radius: 10px;
-  padding: 16px;
-  margin-bottom: 10px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  padding: 18px 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--card-shadow);
+}
+.session-card:active {
+  transform: scale(0.985);
+  transition: transform 0.15s;
 }
 .session-name {
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
 }
 .session-time {
-  font-size: 12px;
-  color: #969799;
+  font-size: 13px;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  margin-left: 10px;
 }
 .new-session {
-  margin-top: 14px;
+  margin-top: 16px;
+}
+.new-session :deep(.van-button) {
+  height: 50px;
+  font-size: 17px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.3);
 }
 .del-icon {
-  color: #969799;
+  color: var(--text-dim);
+  font-size: 20px;
 }
+/* 消息流 */
 .msg-list {
   position: fixed;
-  top: 46px;
-  bottom: 56px;
+  top: 52px;
+  bottom: 60px;
   left: 0;
   right: 0;
   overflow-y: auto;
-  padding: 12px;
-  background: #f7f8fa;
+  padding: 14px;
+  background: var(--page-bg);
 }
 .msg-row {
   display: flex;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .msg-row.user {
   justify-content: flex-end;
@@ -283,36 +302,39 @@ onMounted(loadSessions)
   justify-content: flex-start;
 }
 .msg-bubble {
-  max-width: 78%;
-  padding: 10px 14px;
-  border-radius: 12px;
-  font-size: 15px;
-  line-height: 1.6;
+  max-width: 80%;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 16px;
+  line-height: 1.7;
   white-space: pre-wrap;
   word-break: break-word;
 }
 .msg-row.user .msg-bubble {
-  background: #e8843c;
+  background: var(--brand-gradient);
   color: #fff;
   border-top-right-radius: 4px;
+  box-shadow: 0 2px 8px rgba(232, 132, 60, 0.25);
 }
 .msg-row.assistant .msg-bubble {
-  background: #fff;
-  color: #323233;
+  background: var(--card-bg);
+  color: var(--text-main);
   border-top-left-radius: 4px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+  box-shadow: var(--card-shadow);
 }
 .msg-bubble.streaming {
-  min-width: 60px;
+  min-width: 70px;
 }
 .typing {
-  color: #969799;
+  color: var(--text-dim);
+  font-size: 15px;
 }
 .msg-failed {
-  margin-top: 4px;
-  font-size: 12px;
+  margin-top: 6px;
+  font-size: 13px;
   color: #ee0a24;
 }
+/* 底部输入栏 */
 .chat-input-bar {
   position: fixed;
   left: 0;
@@ -320,15 +342,25 @@ onMounted(loadSessions)
   bottom: 0;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  padding-bottom: calc(8px + env(safe-area-inset-bottom));
-  background: #fff;
-  box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.04);
+  gap: 10px;
+  padding: 10px 14px;
+  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  background: var(--card-bg);
+  box-shadow: 0 -2px 10px rgba(180, 130, 60, 0.08);
 }
 .chat-input {
   flex: 1;
-  background: #f7f8fa;
-  border-radius: 20px;
+  background: var(--page-bg);
+  border-radius: 22px;
+  padding: 10px 16px;
+}
+.chat-input :deep(.van-field__control) {
+  font-size: 16px;
+}
+.chat-input-bar :deep(.van-button) {
+  height: 42px;
+  min-width: 72px;
+  font-size: 16px;
+  font-weight: 600;
 }
 </style>

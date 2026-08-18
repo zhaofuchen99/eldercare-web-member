@@ -68,12 +68,26 @@ async function onSubmit() {
 </script>
 
 <style scoped>
+.password-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
+.password-page :deep(.van-cell-group--inset) {
+  margin-top: 14px;
+  box-shadow: var(--card-shadow);
+}
 .save-wrap {
-  margin: 20px;
+  margin: 24px 20px 14px;
+}
+.save-wrap :deep(.van-button) {
+  height: 52px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.35);
 }
 .tip {
   text-align: center;
-  font-size: 12px;
-  color: #969799;
+  font-size: 14px;
+  color: var(--text-dim);
 }
 </style>

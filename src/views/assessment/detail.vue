@@ -122,27 +122,52 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+.assess-detail-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
 .assess-head {
-  padding: 18px 20px 6px;
+  padding: 20px 20px 8px;
 }
 .assess-title {
-  font-size: 20px;
-  font-weight: 600;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.4;
 }
 .assess-desc {
-  margin-top: 6px;
-  font-size: 13px;
-  color: #969799;
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--text-sub);
+  line-height: 1.6;
 }
 .assess-count {
-  margin-top: 10px;
-  font-size: 12px;
-  color: #d97c2b;
-}
-.q-card {
   margin-top: 12px;
+  font-size: 14px;
+  color: var(--brand-deep);
+  font-weight: 500;
+}
+/* 题卡：左侧橙色强调条 */
+.q-card {
+  margin-top: 14px;
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
+.q-card :deep(.van-cell-group__title) {
+  background: var(--brand-bg);
+  color: var(--text-main);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px 16px;
+  line-height: 1.5;
+  border-left: 4px solid var(--brand-color);
 }
 .submit-wrap {
-  margin: 20px;
+  margin: 22px 20px;
+}
+.submit-wrap :deep(.van-button) {
+  height: 52px;
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.35);
 }
 </style>

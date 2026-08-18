@@ -42,26 +42,41 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.questionnaire-card {
-  background: #fff;
+.assess-list-page {
+  background: var(--page-bg);
+  min-height: 100vh;
+}
+.assess-list-page :deep(.van-notice-bar) {
   border-radius: 10px;
-  padding: 16px;
   margin-bottom: 12px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+.questionnaire-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  padding: 18px 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--card-shadow);
 }
 .q-title {
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
+  line-height: 1.4;
 }
 .q-desc {
   margin-top: 8px;
-  font-size: 13px;
-  color: #969799;
-  line-height: 1.6;
+  font-size: 14px;
+  color: var(--text-dim);
+  line-height: 1.7;
 }
 .q-footer {
-  margin-top: 12px;
+  margin-top: 14px;
   display: flex;
   justify-content: flex-end;
+}
+.q-footer :deep(.van-button) {
+  height: 42px;
+  min-width: 116px;
+  font-size: 15px;
+  font-weight: 600;
 }
 </style>
