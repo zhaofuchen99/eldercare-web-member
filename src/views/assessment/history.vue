@@ -81,7 +81,7 @@ onMounted(load)
 }
 .h-time {
   margin-top: 7px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
 }
 .h-score {
@@ -99,7 +99,7 @@ onMounted(load)
   font-weight: 700;
 }
 .h-score-label {
-  font-size: 12px;
-  color: var(--text-dim);
+  font-size: 13px;
+  color: var(--text-sub);
 }
 </style>

@@ -53,7 +53,7 @@ router.beforeEach((to) => {
 
 // 页面标题
 router.afterEach((to) => {
-  document.title = to.meta.title ? `${to.meta.title} · AI 智能养老社区` : 'AI 智能养老社区'
+  document.title = to.meta.title ? `${to.meta.title} · 智慧养老社区` : '智慧养老社区'
 })
 
 export default router

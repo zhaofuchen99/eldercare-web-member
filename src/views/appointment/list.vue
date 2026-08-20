@@ -19,7 +19,7 @@
         <div v-if="p.suitablePeople" class="pkg-line">适合：{{ p.suitablePeople }}</div>
         <div v-if="p.description" class="pkg-line dim">{{ p.description }}</div>
         <div v-if="p.items && p.items.length" class="pkg-items">
-          <van-tag v-for="(it, i) in p.items" :key="i" round plain color="#e8843c" class="pkg-tag">{{ it }}</van-tag>
+          <van-tag v-for="(it, i) in p.items" :key="i" round plain color="#2e7d5f" class="pkg-tag">{{ it }}</van-tag>
         </div>
         <div class="pkg-footer">
           <van-button size="small" round type="primary">选择时段预约</van-button>
@@ -98,7 +98,7 @@ onMounted(async () => {
   line-height: 1.4;
 }
 .pkg-price {
-  color: var(--brand-deep);
+  color: var(--warm-deep);
   font-size: 20px;
   font-weight: 700;
   flex-shrink: 0;
@@ -124,8 +124,8 @@ onMounted(async () => {
   gap: 8px;
 }
 .pkg-tag {
-  padding: 2px 10px;
-  font-size: 13px;
+  padding: 3px 10px;
+  font-size: 14px;
 }
 .pkg-footer {
   margin-top: 14px;

@@ -4,6 +4,8 @@
     <div class="page-content">
       <van-notice-bar left-icon="info-o" text="完成一份评测可获得 20 积分，提交后生成健康评分与 AI 建议" />
 
+      <van-cell title="我的评测记录" icon="records-o" is-link class="history-link" @click="goHistory" />
+
       <van-skeleton title :row="3" v-if="loading" />
       <van-empty v-else-if="!list.length" description="暂无已发布的问卷" image-size="80" />
 
@@ -31,6 +33,10 @@ function go(q) {
   router.push(`/assessment/${q.id}`)
 }
 
+function goHistory() {
+  router.push('/assessment/history')
+}
+
 onMounted(async () => {
   loading.value = true
   try {
@@ -50,6 +56,17 @@ onMounted(async () => {
   border-radius: 10px;
   margin-bottom: 12px;
 }
+.history-link {
+  border-radius: 10px;
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.history-link :deep(.van-cell__title) {
+  font-size: 16px;
+  font-weight: 600;
+}
 .questionnaire-card {
   background: var(--card-bg);
   border-radius: var(--radius-card);
@@ -64,8 +81,8 @@ onMounted(async () => {
 }
 .q-desc {
   margin-top: 8px;
-  font-size: 14px;
-  color: var(--text-dim);
+  font-size: 15px;
+  color: var(--text-sub);
   line-height: 1.7;
 }
 .q-footer {

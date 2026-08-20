@@ -2,7 +2,7 @@
   <div class="login-page">
     <div class="login-header">
       <div class="login-logo">🏡</div>
-      <div class="login-title">AI 智能养老社区</div>
+      <div class="login-title">智慧养老社区</div>
       <div class="login-subtitle">让每位长者乐享智慧晚年</div>
     </div>
 
@@ -75,10 +75,10 @@ function goForgot() {
 <style scoped>
 .login-page {
   min-height: 100vh;
-  background: linear-gradient(160deg, #ffe9d2 0%, var(--page-bg) 55%);
+  background: var(--page-bg);
 }
 .login-header {
-  padding: 64px 0 40px;
+  padding: 56px 0 36px;
   text-align: center;
 }
 .login-logo {
@@ -113,7 +113,6 @@ function goForgot() {
   height: 52px;
   font-size: 18px;
   font-weight: 600;
-  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.35);
 }
 .login-links {
   display: flex;
@@ -122,5 +121,8 @@ function goForgot() {
   font-size: 16px;
   font-weight: 500;
   color: var(--brand-deep);
+}
+.login-links span {
+  padding: 6px 4px;
 }
 </style>

@@ -146,8 +146,8 @@ onMounted(async () => {
 }
 .book-tip {
   margin-top: 8px;
-  font-size: 14px;
-  color: var(--text-dim);
+  font-size: 15px;
+  color: var(--text-sub);
   line-height: 1.6;
 }
 /* 日期横条 */
@@ -170,10 +170,9 @@ onMounted(async () => {
   box-shadow: var(--card-shadow);
 }
 .date-chip.active {
-  background: var(--brand-gradient);
+  background: var(--brand-color);
   color: #fff;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(232, 132, 60, 0.35);
 }
 .date-week {
   font-size: 13px;
@@ -197,20 +196,20 @@ onMounted(async () => {
 }
 .slot-card.active {
   border-color: var(--brand-color);
-  background: #fff9f3;
+  background: var(--brand-bg);
 }
 .slot-time {
   font-size: 17px;
   font-weight: 600;
 }
 .slot-left {
-  font-size: 14px;
-  color: #07c160;
+  font-size: 15px;
+  color: var(--good-color);
   flex: 1;
   margin: 0 12px;
 }
 .slot-left.full {
-  color: #ee0a24;
+  color: var(--bad-color);
 }
 .submit-label {
   color: var(--text-main);

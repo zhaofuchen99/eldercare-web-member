@@ -28,11 +28,11 @@ const msg = ref(null)
 
 function typeColor(t) {
   return {
-    APPOINTMENT: '#1989fa',
-    ACTIVITY: '#e8843c',
-    SYSTEM: '#07c160',
-    HEALTH_REMINDER: '#ed6a0c'
-  }[t] || '#969799'
+    APPOINTMENT: '#41769e',
+    ACTIVITY: '#c1731f',
+    SYSTEM: '#2e7d5f',
+    HEALTH_REMINDER: '#a86d12'
+  }[t] || '#7d8187'
 }
 
 onMounted(async () => {
@@ -73,8 +73,8 @@ onMounted(async () => {
 }
 .detail-time {
   margin-top: 8px;
-  font-size: 13px;
-  color: #b0b1b4;
+  font-size: 14px;
+  color: var(--text-dim);
 }
 .detail-content {
   margin-top: 16px;

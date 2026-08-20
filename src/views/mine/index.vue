@@ -1,53 +1,52 @@
 <template>
   <div class="mine-page">
-    <van-nav-bar title="我的" fixed placeholder safe-area-inset-top />
-
     <!-- 个人资料卡 -->
-    <div class="mine-hero" @click="go('/profile')">
-      <van-image round width="58" height="58" :src="auth.userInfo?.avatar || ''" class="mine-avatar">
+    <div class="card user-card" @click="go('/profile')">
+      <van-image round width="58" height="58" :src="auth.userInfo?.avatar || ''">
         <template #error>
           <div class="avatar-fallback">🧓</div>
         </template>
       </van-image>
-      <div class="mine-user">
-        <div class="mine-name">{{ auth.realName || auth.phone }}</div>
-        <div class="mine-sub">{{ auth.phone }} · {{ enumText('memberLevel', auth.memberLevel) }}</div>
+      <div class="user-info">
+        <div class="user-name">{{ auth.realName || auth.phone }}</div>
+        <div class="user-sub">{{ auth.phone }} · {{ enumText('memberLevel', auth.memberLevel) }}会员</div>
       </div>
-      <van-icon name="arrow" class="mine-arrow" />
+      <van-icon name="arrow" class="user-arrow" />
     </div>
 
-    <!-- 积分概览 -->
-    <van-cell-group inset class="mine-points" @click="go('/points')">
-      <van-cell title="当前积分" is-link>
-        <template #value>
-          <span class="points-num">{{ auth.points }}</span>
-        </template>
-      </van-cell>
-    </van-cell-group>
-
-    <!-- 功能菜单 -->
-    <van-cell-group inset title="常用功能">
-      <van-cell icon="chat-o" title="AI 健康助手" is-link @click="go('/chat')" />
+    <!-- 健康服务 -->
+    <van-cell-group inset title="健康服务">
+      <van-cell icon="bar-chart-o" title="健康档案" is-link @click="go('/health')" />
       <van-cell icon="todo-list-o" title="健康评测" is-link @click="go('/assessment')" />
-      <van-cell icon="records-o" title="我的评测记录" is-link @click="go('/assessment/history')" />
       <van-cell icon="shop-o" title="体检预约" is-link @click="go('/appointment')" />
       <van-cell icon="calendar-o" title="我的预约" is-link @click="go('/appointment/mine')" />
+      <van-cell icon="chat-o" title="健康咨询" is-link @click="go('/chat')" />
     </van-cell-group>
 
-    <van-cell-group inset title="我的信息">
+    <!-- 活动与消息 -->
+    <van-cell-group inset title="活动与消息">
+      <van-cell icon="flag-o" title="我的活动" is-link @click="go('/activity')" />
       <van-cell icon="volume-o" title="消息中心" is-link @click="go('/message')">
         <template #right-icon>
           <van-badge v-if="unread > 0" :content="unread > 99 ? '99+' : unread" />
           <van-icon name="arrow" class="cell-arrow" />
         </template>
       </van-cell>
-      <van-cell icon="gem-o" title="积分明细" is-link @click="go('/points')" />
+      <van-cell icon="gem-o" title="积分明细" is-link @click="go('/points')">
+        <template #value>
+          <span class="points-num">{{ auth.points }}</span>
+        </template>
+      </van-cell>
+    </van-cell-group>
+
+    <!-- 设置 -->
+    <van-cell-group inset title="设置">
       <van-cell icon="manager-o" title="个人信息" is-link @click="go('/profile')" />
       <van-cell icon="lock" title="修改密码" is-link @click="go('/password')" />
     </van-cell-group>
 
     <div class="logout-wrap">
-      <van-button round block type="danger" plain :loading="logoutLoading" @click="doLogout">退出登录</van-button>
+      <van-button round block plain type="danger" :loading="logoutLoading" @click="doLogout">退出登录</van-button>
     </div>
 
     <div class="empty-pad" />
@@ -110,82 +109,58 @@ onMounted(async () => {
   background: var(--page-bg);
   min-height: 100vh;
 }
-.mine-hero {
+/* 个人资料卡：白底清爽，点击进入个人信息 */
+.user-card {
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 26px 20px;
-  background: var(--brand-gradient);
-  border-radius: 0 0 24px 24px;
-  color: #fff;
+  margin: 14px;
+  padding: 20px 16px;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(232, 132, 60, 0.22);
 }
-.mine-hero:active {
-  opacity: 0.92;
-}
-.mine-avatar {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+.user-card:active {
+  background: #f5f3ee;
 }
 .avatar-fallback {
   width: 58px;
   height: 58px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.92);
+  background: var(--brand-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 32px;
+  font-size: 30px;
 }
-.mine-user {
+.user-info {
   flex: 1;
+  min-width: 0;
 }
-.mine-name {
+.user-name {
   font-size: 21px;
   font-weight: 700;
+  color: var(--text-main);
 }
-.mine-sub {
+.user-sub {
   margin-top: 6px;
   font-size: 14px;
-  opacity: 0.92;
+  color: var(--text-sub);
 }
-.mine-arrow {
+.user-arrow {
   font-size: 18px;
-  opacity: 0.85;
+  color: var(--text-dim);
 }
-/* 积分概览 */
-.mine-points {
-  margin-top: 14px;
-  box-shadow: var(--card-shadow);
-}
-.points-num {
-  color: var(--brand-deep);
-  font-size: 22px;
-  font-weight: 700;
-}
-/* 功能菜单卡片 */
+/* 分组菜单卡片 */
 .mine-page :deep(.van-cell-group--inset) {
   box-shadow: var(--card-shadow);
   margin-top: 14px;
 }
-.mine-page :deep(.van-cell-group__title) {
-  color: var(--brand-deep);
-  font-weight: 600;
-}
-.mine-page :deep(.van-cell .van-icon) {
-  width: 34px;
-  height: 34px;
-  border-radius: 9px;
-  background: var(--brand-bg);
-  color: var(--brand-deep);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  margin-right: 12px;
-}
 .mine-page :deep(.van-cell__title) {
   font-size: 16px;
+}
+.points-num {
+  color: var(--warm-deep);
+  font-size: 20px;
+  font-weight: 700;
 }
 .cell-arrow {
   margin-left: 6px;

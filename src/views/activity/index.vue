@@ -1,30 +1,38 @@
 <template>
   <div class="activity-page">
-    <van-nav-bar title="社区活动" fixed placeholder safe-area-inset-top />
-    <van-tabs v-model="tab" sticky offset-top="46">
+    <van-tabs v-model="tab" sticky offset-top="52">
       <van-tab title="活动广场" name="square">
         <div class="act-list">
           <van-skeleton title :row="3" v-if="loading" />
           <van-empty v-else-if="!list.length" description="暂无活动" image-size="80" />
           <div v-for="a in list" :key="a.id" class="act-card" @click="openDetail(a)">
-            <div class="act-main">
+            <div class="act-top">
               <div class="act-title">{{ a.title }}</div>
-              <div class="act-content" v-if="a.content">{{ a.content }}</div>
-              <div class="act-meta">
-                <van-icon name="location-o" class="meta-icon" /> {{ a.location || '未设置地点' }}
-              </div>
-              <div class="act-meta">
-                <van-icon name="clock-o" class="meta-icon" />
-                活动时间：{{ fmt(a.activityStartTime) }} ~ {{ fmtTime(a.activityEndTime) }}
-              </div>
-              <div class="act-meta dim">
-                <van-icon name="underway-o" class="meta-icon" />
-                报名：{{ fmt(a.registrationStartTime) }} ~ {{ fmtTime(a.registrationEndTime) }}
-              </div>
+              <van-tag :type="statusType(a.status)" class="act-status">{{ enumText('activityStatus', a.status) }}</van-tag>
             </div>
-            <div class="act-right">
-              <van-tag :type="statusType(a.status)">{{ enumText('activityStatus', a.status) }}</van-tag>
-              <div class="act-count">{{ a.currentParticipants || 0 }}/{{ a.maxParticipants || '不限' }}</div>
+            <div class="act-content" v-if="a.content">{{ a.content }}</div>
+            <div class="act-meta">
+              <van-icon name="clock-o" class="meta-icon" /> {{ fmt(a.activityStartTime) }} ~ {{ fmtTime(a.activityEndTime) }}
+            </div>
+            <div class="act-meta">
+              <van-icon name="location-o" class="meta-icon" /> {{ a.location || '未设置地点' }}
+            </div>
+            <div class="act-meta dim">
+              <van-icon name="underway-o" class="meta-icon" />
+              报名：{{ fmt(a.registrationStartTime) }} ~ {{ fmtTime(a.registrationEndTime) }}
+            </div>
+            <div class="act-foot">
+              <span class="act-count">已报名 {{ a.currentParticipants || 0 }} / {{ a.maxParticipants || '不限' }}</span>
+              <van-button
+                v-if="a.status === 'REGISTRATING'"
+                size="small"
+                round
+                type="primary"
+                class="act-btn"
+                @click.stop="openDetail(a)"
+              >
+                立即报名
+              </van-button>
             </div>
           </div>
         </div>
@@ -34,17 +42,17 @@
         <div class="act-list">
           <van-empty v-if="!mineList.length" description="还没有报名活动" image-size="80" />
           <div v-for="m in mineList" :key="m.id" class="act-card">
-            <div class="act-main">
+            <div class="act-top">
               <div class="act-title">{{ m.title }}</div>
-              <div class="act-meta">
-                <van-icon name="location-o" class="meta-icon" /> {{ m.location || '未设置地点' }}
-              </div>
-              <div class="act-meta">
-                <van-icon name="clock-o" class="meta-icon" /> {{ fmt(m.activityStartTime) }} ~ {{ fmtTime(m.activityEndTime) }}
-              </div>
-            </div>
-            <div class="act-right">
               <van-tag :type="statusType(m.activityStatus)">{{ enumText('activityStatus', m.activityStatus) }}</van-tag>
+            </div>
+            <div class="act-meta">
+              <van-icon name="clock-o" class="meta-icon" /> {{ fmt(m.activityStartTime) }} ~ {{ fmtTime(m.activityEndTime) }}
+            </div>
+            <div class="act-meta">
+              <van-icon name="location-o" class="meta-icon" /> {{ m.location || '未设置地点' }}
+            </div>
+            <div class="act-foot">
               <van-tag :type="m.checkInStatus === 'CHECKED_IN' ? 'success' : 'default'" class="checkin-tag">
                 {{ enumText('checkInStatus', m.checkInStatus) }}
               </van-tag>
@@ -250,66 +258,78 @@ onMounted(() => {
   padding: 12px 14px 70px;
 }
 .act-card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   background: var(--card-bg);
   border-radius: var(--radius-card);
   padding: 16px;
   margin-bottom: 12px;
   box-shadow: var(--card-shadow);
 }
-.act-main {
-  flex: 1;
-  min-width: 0;
-  margin-right: 12px;
+.act-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
 }
 .act-title {
+  flex: 1;
   font-size: 17px;
   font-weight: 600;
-  margin-bottom: 8px;
-  line-height: 1.4;
+  line-height: 1.5;
+}
+.act-status {
+  flex-shrink: 0;
+  margin-top: 3px;
 }
 .act-content {
-  font-size: 14px;
-  color: var(--text-dim);
+  margin-top: 8px;
+  font-size: 15px;
+  color: var(--text-sub);
   line-height: 1.6;
-  margin-bottom: 8px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 .act-meta {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--text-sub);
-  margin-top: 6px;
+  margin-top: 8px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 6px;
+  line-height: 1.5;
 }
 .act-meta .meta-icon {
   color: var(--brand-deep);
+  flex-shrink: 0;
 }
 .act-meta.dim {
   color: var(--text-dim);
-  font-size: 13px;
+  font-size: 14px;
 }
 .act-meta.dim .meta-icon {
   color: var(--text-dim);
 }
-.act-right {
+.act-foot {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line-color);
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
 }
 .act-count {
-  font-size: 13px;
-  color: var(--text-dim);
+  font-size: 14px;
+  color: var(--text-sub);
+}
+.act-btn {
+  height: 40px;
+  min-width: 96px;
+  font-size: 15px;
+  font-weight: 600;
 }
 .checkin-tag {
-  margin-top: 2px;
+  font-size: 14px;
 }
 /* 活动详情弹层 */
 .detail-pop {

@@ -81,27 +81,28 @@ onMounted(load)
   min-height: 100vh;
 }
 .points-hero {
-  padding: 30px 20px;
-  background: var(--brand-gradient);
-  border-radius: 0 0 24px 24px;
-  color: #fff;
+  margin: 14px;
+  padding: 26px 20px;
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  box-shadow: var(--card-shadow);
   text-align: center;
-  box-shadow: 0 6px 18px rgba(232, 132, 60, 0.22);
 }
 .points-hero-label {
-  font-size: 15px;
-  opacity: 0.95;
+  font-size: 16px;
+  color: var(--text-sub);
 }
 .points-hero-num {
   margin-top: 8px;
-  font-size: 50px;
+  font-size: 46px;
   font-weight: 700;
   line-height: 1.1;
+  color: var(--warm-deep);
 }
 .points-hero-tip {
   margin-top: 10px;
-  font-size: 13px;
-  opacity: 0.9;
+  font-size: 14px;
+  color: var(--text-dim);
 }
 /* 积分流水卡 */
 .tx-card {
@@ -126,12 +127,12 @@ onMounted(load)
 }
 .tx-time {
   margin-top: 6px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
 }
 .tx-expire {
   margin-left: 8px;
-  color: #b0b1b4;
+  color: var(--text-dim);
 }
 .tx-amount {
   font-size: 22px;
@@ -140,7 +141,7 @@ onMounted(load)
   margin-left: 12px;
 }
 .tx-amount.plus {
-  color: var(--brand-deep);
+  color: var(--warm-deep);
 }
 .tx-amount.minus {
   color: var(--text-sub);

@@ -2,7 +2,7 @@
   <div class="chat-page">
     <!-- 会话列表 -->
     <template v-if="view === 'list'">
-      <van-nav-bar title="AI 健康助手" fixed placeholder safe-area-inset-top />
+      <van-nav-bar title="健康咨询" fixed placeholder safe-area-inset-top />
       <div class="page-content">
         <van-empty v-if="!sessions.length && !loading" description="还没有会话，开始一段健康咨询吧" image-size="80" />
         <div v-for="s in sessions" :key="s.id" class="session-card" @click="openSession(s)">
@@ -35,9 +35,9 @@
       <div class="msg-list" ref="msgRef">
         <div v-for="m in messages" :key="m.id" class="msg-row" :class="m.role === 'USER' ? 'user' : 'assistant'">
           <div class="msg-bubble" :class="{ streaming: m.streaming }">
-            <div v-if="!m.message && m.streaming" class="typing">正在思考…</div>
+            <div v-if="!m.message && m.streaming" class="typing">正在为您整理回答…</div>
             <div v-else class="msg-text">{{ m.message }}</div>
-            <div v-if="m.status === 'FAILED'" class="msg-failed">⚠ AI 服务暂不可用</div>
+            <div v-if="m.status === 'FAILED'" class="msg-failed">回复失败，请检查网络后重试</div>
           </div>
         </div>
       </div>
@@ -258,11 +258,11 @@ onMounted(loadSessions)
   transition: transform 0.15s;
 }
 .session-name {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
 }
 .session-time {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--text-dim);
   flex-shrink: 0;
   margin-left: 10px;
@@ -274,7 +274,6 @@ onMounted(loadSessions)
   height: 50px;
   font-size: 17px;
   font-weight: 600;
-  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.3);
 }
 .del-icon {
   color: var(--text-dim);
@@ -302,24 +301,24 @@ onMounted(loadSessions)
   justify-content: flex-start;
 }
 .msg-bubble {
-  max-width: 80%;
+  max-width: 82%;
   padding: 12px 16px;
   border-radius: 14px;
-  font-size: 16px;
-  line-height: 1.7;
+  font-size: 17px;
+  line-height: 1.8;
   white-space: pre-wrap;
   word-break: break-word;
 }
 .msg-row.user .msg-bubble {
-  background: var(--brand-gradient);
+  background: var(--brand-color);
   color: #fff;
   border-top-right-radius: 4px;
-  box-shadow: 0 2px 8px rgba(232, 132, 60, 0.25);
 }
 .msg-row.assistant .msg-bubble {
   background: var(--card-bg);
   color: var(--text-main);
   border-top-left-radius: 4px;
+  border: 1px solid var(--line-color);
   box-shadow: var(--card-shadow);
 }
 .msg-bubble.streaming {
@@ -327,14 +326,14 @@ onMounted(loadSessions)
 }
 .typing {
   color: var(--text-dim);
-  font-size: 15px;
+  font-size: 16px;
 }
 .msg-failed {
-  margin-top: 6px;
-  font-size: 13px;
-  color: #ee0a24;
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--bad-color);
 }
-/* 底部输入栏 */
+/* 底部输入栏：输入框与发送按钮都足够大 */
 .chat-input-bar {
   position: fixed;
   left: 0;
@@ -343,24 +342,24 @@ onMounted(loadSessions)
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 10px 14px;
-  padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  padding: 12px 14px;
+  padding-bottom: calc(12px + env(safe-area-inset-bottom));
   background: var(--card-bg);
-  box-shadow: 0 -2px 10px rgba(180, 130, 60, 0.08);
+  box-shadow: 0 -1px 8px rgba(70, 65, 55, 0.08);
 }
 .chat-input {
   flex: 1;
   background: var(--page-bg);
-  border-radius: 22px;
-  padding: 10px 16px;
+  border-radius: 24px;
+  padding: 12px 16px;
 }
 .chat-input :deep(.van-field__control) {
   font-size: 16px;
 }
 .chat-input-bar :deep(.van-button) {
-  height: 42px;
-  min-width: 72px;
-  font-size: 16px;
+  height: 48px;
+  min-width: 84px;
+  font-size: 17px;
   font-weight: 600;
 }
 </style>

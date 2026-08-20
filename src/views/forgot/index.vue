@@ -98,7 +98,6 @@ async function onSubmit() {
   height: 52px;
   font-size: 18px;
   font-weight: 600;
-  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.35);
 }
 /* 验证码小按钮加大热区 */
 .forgot-page :deep(.van-field__button .van-button) {

@@ -48,3 +48,58 @@ export function genderText(v) {
   if (v === 'F' || v === '0' || v === '女') return '女'
   return v || '-'
 }
+
+/**
+ * 健康指标展示解读（仅前端展示用，供长者快速看懂状态）
+ * 返回 [{ label, value, unit, status, level }]，level：good 正常 / warn 需关注
+ */
+export function healthMetrics(r) {
+  if (!r) return []
+  const rows = []
+  if (r.systolic != null && r.diastolic != null) {
+    let status = '正常'
+    let level = 'good'
+    if (r.systolic >= 140 || r.diastolic >= 90) {
+      status = '偏高'
+      level = 'warn'
+    } else if (r.systolic < 90 || r.diastolic < 60) {
+      status = '偏低'
+      level = 'warn'
+    }
+    rows.push({ label: '血压', value: `${r.systolic}/${r.diastolic}`, unit: 'mmHg', status, level })
+  }
+  if (r.bloodSugar !== null && r.bloodSugar !== undefined && r.bloodSugar !== '') {
+    const v = Number(r.bloodSugar)
+    let status = '正常'
+    let level = 'good'
+    if (v > 6.1) {
+      status = '偏高'
+      level = 'warn'
+    } else if (v < 3.9) {
+      status = '偏低'
+      level = 'warn'
+    }
+    rows.push({ label: '血糖', value: String(r.bloodSugar), unit: 'mmol/L', status, level })
+  }
+  if (r.heartRate !== null && r.heartRate !== undefined && r.heartRate !== '') {
+    const v = Number(r.heartRate)
+    let status = '正常'
+    let level = 'good'
+    if (v > 100) {
+      status = '偏快'
+      level = 'warn'
+    } else if (v < 60) {
+      status = '偏缓'
+      level = 'warn'
+    }
+    rows.push({ label: '心率', value: String(r.heartRate), unit: '次/分', status, level })
+  }
+  return rows
+}
+
+/** 异常指标的温和提醒文案（无异常返回空串） */
+export function healthTip(r) {
+  const warns = healthMetrics(r).filter((m) => m.level === 'warn')
+  if (!warns.length) return ''
+  return `${warns.map((m) => m.label).join('、')}有些波动，建议留意休息；如有不适请及时就医`
+}

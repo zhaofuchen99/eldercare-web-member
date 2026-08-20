@@ -72,35 +72,36 @@ onMounted(async () => {
   background: var(--page-bg);
   min-height: 100vh;
 }
-/* 评分卡片 */
+/* 评分卡片：白底清晰，不做大面积渲染色块 */
 .score-card {
-  margin: 16px;
-  padding: 28px 22px;
-  border-radius: 16px;
+  margin: 14px;
+  padding: 26px 22px;
+  border-radius: var(--radius-card);
   text-align: center;
-  background: var(--brand-gradient);
-  color: #fff;
-  box-shadow: 0 8px 22px rgba(232, 132, 60, 0.3);
+  background: var(--card-bg);
+  box-shadow: var(--card-shadow);
 }
 .score-grade {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
-  opacity: 0.95;
+  color: var(--brand-deep);
 }
 .score-num {
-  margin-top: 10px;
-  font-size: 54px;
+  margin-top: 8px;
+  font-size: 52px;
   font-weight: 700;
   line-height: 1.1;
+  color: var(--brand-deep);
 }
 .score-total {
   font-size: 18px;
   font-weight: 400;
+  color: var(--text-sub);
 }
 .score-sub {
   margin-top: 8px;
   font-size: 14px;
-  opacity: 0.92;
+  color: var(--text-dim);
 }
 .suggest-card {
   margin-top: 14px;
@@ -148,6 +149,5 @@ onMounted(async () => {
   height: 52px;
   font-size: 18px;
   font-weight: 600;
-  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.35);
 }
 </style>

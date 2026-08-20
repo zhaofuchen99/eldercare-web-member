@@ -83,11 +83,10 @@ async function onSubmit() {
   height: 52px;
   font-size: 18px;
   font-weight: 600;
-  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.35);
 }
 .tip {
   text-align: center;
-  font-size: 14px;
-  color: var(--text-dim);
+  font-size: 15px;
+  color: var(--text-sub);
 }
 </style>

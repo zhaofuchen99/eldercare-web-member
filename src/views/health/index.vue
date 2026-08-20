@@ -1,8 +1,25 @@
 <template>
   <div class="health-page">
-    <van-nav-bar title="健康档案" fixed placeholder safe-area-inset-top />
+    <!-- 健康概览：最近一次指标的直观解读 -->
+    <div class="card section overview">
+      <div class="sec-head">
+        <span class="sec-title">健康概览</span>
+        <span v-if="latest" class="sec-more">{{ formatDateTime(latest.recordedTime) }}</span>
+      </div>
+      <template v-if="metrics.length">
+        <div class="metric-row" v-for="m in metrics" :key="m.label">
+          <span class="metric-label">{{ m.label }}</span>
+          <span class="metric-value">{{ m.value }}<em class="metric-unit">{{ m.unit }}</em></span>
+          <span class="metric-status" :class="m.level">{{ m.status }}</span>
+        </div>
+        <div v-if="tipText" class="health-tip">{{ tipText }}</div>
+      </template>
+      <div v-else-if="!loading" class="overview-empty">
+        还没有健康记录，在下方填写数据后，这里会展示您最新的健康状况
+      </div>
+    </div>
 
-    <!-- 录入 -->
+    <!-- 录入健康数据 -->
     <van-form @submit="onSubmit">
       <van-cell-group inset title="录入健康数据">
         <van-field
@@ -52,6 +69,13 @@
       </div>
     </van-form>
 
+    <!-- 健康服务：体检与评测入口 -->
+    <van-cell-group inset title="健康服务">
+      <van-cell icon="todo-list-o" title="健康评测" label="回答问卷，生成健康评分与建议" is-link @click="go('/assessment')" />
+      <van-cell icon="shop-o" title="体检预约" label="选择体检套餐，预约合适时段" is-link @click="go('/appointment')" />
+      <van-cell icon="calendar-o" title="我的体检记录" label="查看预约情况，下载体检报告" is-link @click="go('/appointment/mine')" />
+    </van-cell-group>
+
     <!-- 历史记录 -->
     <van-cell-group inset title="历史记录">
       <van-cell
@@ -61,7 +85,7 @@
         :label="`心率 ${r.heartRate ?? '-'} · 体重 ${r.weight ?? '-'}kg · BMI ${r.bmi ?? '-'} · ${r.memo || ''}`"
       >
         <template #value>
-          <span class="record-time">{{ formatDateTime(r.recordedTime) }}</span>
+          <span class="history-time">{{ formatDateTime(r.recordedTime) }}</span>
         </template>
       </van-cell>
       <van-empty v-if="!list.length && !loading" description="暂无健康记录" image-size="80" />
@@ -81,14 +105,19 @@
         </van-collapse-item>
       </van-collapse>
     </van-cell-group>
+
+    <div class="empty-pad" />
   </div>
 </template>
 
 <script setup>
-import { ref, reactive, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import { showSuccessToast, showFailToast } from 'vant'
 import { recordHealth, getHealthHistory, getHealthTrend } from '../../api/health'
-import { formatDateTime } from '../../utils/format'
+import { formatDateTime, healthMetrics, healthTip } from '../../utils/format'
+
+const router = useRouter()
 
 const INDICATOR_TEXT = {
   SYSTOLIC: '收缩压', DIASTOLIC: '舒张压', BLOOD_SUGAR: '空腹血糖', HEART_RATE: '心率', BMI: 'BMI'
@@ -104,6 +133,15 @@ const query = reactive({ page: 1, size: 10 })
 
 const activeNames = ref([])
 const trendEntries = ref([])
+
+// 概览：取最近一条记录的展示解读
+const latest = computed(() => list.value[0] || null)
+const metrics = computed(() => healthMetrics(latest.value))
+const tipText = computed(() => healthTip(latest.value))
+
+function go(path) {
+  router.push(path)
+}
 
 // 可选数字校验：为空则通过，非空需在范围内
 function optionalNum(val, rule) {
@@ -176,7 +214,17 @@ onMounted(() => {
 .health-page {
   background: var(--page-bg);
   min-height: 100vh;
-  padding-bottom: 70px;
+  padding-bottom: 20px;
+}
+/* 健康概览卡片 */
+.overview {
+  margin: 14px;
+}
+.overview-empty {
+  padding: 8px 0 4px;
+  font-size: 15px;
+  color: var(--text-sub);
+  line-height: 1.7;
 }
 .health-page :deep(.van-cell-group--inset) {
   box-shadow: var(--card-shadow);
@@ -188,11 +236,10 @@ onMounted(() => {
   height: 50px;
   font-size: 17px;
   font-weight: 600;
-  box-shadow: 0 6px 16px rgba(232, 132, 60, 0.3);
 }
-.record-time {
+.history-time {
   color: var(--text-dim);
-  font-size: 13px;
+  font-size: 14px;
 }
 /* 趋势数据行：分列清晰 */
 .trend-row {

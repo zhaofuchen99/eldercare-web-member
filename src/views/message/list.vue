@@ -36,11 +36,11 @@ const query = reactive({ page: 1, size: 20 })
 
 function typeColor(t) {
   return {
-    APPOINTMENT: '#1989fa',
-    ACTIVITY: '#e8843c',
-    SYSTEM: '#07c160',
-    HEALTH_REMINDER: '#ed6a0c'
-  }[t] || '#969799'
+    APPOINTMENT: '#41769e',
+    ACTIVITY: '#c1731f',
+    SYSTEM: '#2e7d5f',
+    HEALTH_REMINDER: '#a86d12'
+  }[t] || '#7d8187'
 }
 
 function goDetail(m) {
@@ -82,7 +82,7 @@ onMounted(load)
   margin-bottom: 12px;
   box-shadow: var(--card-shadow);
 }
-/* 未读消息：左侧橙色强调条 */
+/* 未读消息：左侧主色强调条 */
 .msg-card.unread {
   border-left: 4px solid var(--brand-color);
 }
@@ -112,13 +112,13 @@ onMounted(load)
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: #ee0a24;
+  background: var(--warm-color);
   flex-shrink: 0;
 }
 .msg-preview {
   margin-top: 8px;
-  font-size: 14px;
-  color: var(--text-dim);
+  font-size: 15px;
+  color: var(--text-sub);
   line-height: 1.6;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -126,11 +126,11 @@ onMounted(load)
 }
 .msg-time {
   margin-top: 8px;
-  font-size: 13px;
-  color: #b0b1b4;
+  font-size: 14px;
+  color: var(--text-dim);
 }
 .msg-arrow {
-  color: #c8c9cc;
+  color: var(--text-dim);
   flex-shrink: 0;
   font-size: 16px;
 }

@@ -27,13 +27,16 @@ const title = computed(() => route.meta.title || '')
   background: var(--page-bg);
 }
 .tabbar-layout :deep(.van-tabbar) {
-  box-shadow: 0 -2px 10px rgba(180, 130, 60, 0.06);
+  box-shadow: 0 -1px 8px rgba(70, 65, 55, 0.06);
+}
+.tabbar-layout :deep(.van-tabbar-item) {
+  color: var(--text-sub);
 }
 .tabbar-layout :deep(.van-tabbar-item--active) {
   font-weight: 600;
 }
 .tabbar-body {
   min-height: 100vh;
-  padding-bottom: 58px;
+  padding-bottom: 60px;
 }
 </style>
